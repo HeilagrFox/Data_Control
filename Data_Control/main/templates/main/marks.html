@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="marks">
+    Оценки:
+ {% for key in entrants%}
+    <p>{{key}}</p>
+{%endfor%}
+
+</div>
+</body>
+</html>
