@@ -1,15 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+
+{% extends 'main/sample.html' %}
+{% block title %}Факультеты{% endblock %}
+
+
+{% block content%}
+
 <div class="faculty">
-    На факультете:
-    {% for key in entrants_on_faculty%}
-    <p>{{key.name}}</p>
-{%endfor%}
+    {% for dict in entrants_on_faculty %}
+      {% for key, value in dict.items %}
+    <div class="block">
+       <b>Факультет {{ key }} :</b> <br>
+       {% for name in value %}
+        <p > {{ name }} <a href="{% url 'get_certificate' name.id %}" class="btn btn-secondary"  style="float: right" > Справка </a></p>
+       {% endfor %}
+     </div>
+      {% endfor %}
+    {% endfor %}
+
     </div>
-</body>
-</html>
+
+{% endblock %}

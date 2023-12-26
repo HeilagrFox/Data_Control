@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://libs.cdnjs.net/font-awesome/6.5.1/css/all.css">
+    <link rel="stylesheet" href="{% static 'main/css/major.css' %}">
+</head>
+<body>
+<aside>
+
+  <ul>
+    <li><a href="{% url 'home' %}">Главная</a></li>
+    <li><a href = "{% url 'faculty' %}">Списки на факультеты</a></li>
+    <li><a href="{% url 'marks' %}">Информация по абитуриентам</a></li>
+    <li><a href="{% url 'classrooms' %}">Информация по группам</a></li>
+    <li><a href="{% url 'report' %}">Отчет о работе</a></li>
+  </ul>
+
+</aside>
+<main>
+{% block content%} {% endblock %}
+</main>
+</body>
+</html>

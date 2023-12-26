@@ -1,20 +1,16 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<div class="entrant">
-{% for key in entrants%}
-    <p>{{key.name}}</p>
-    <p>{{key.group}}</p>
-{%endfor%}
+
+
+{% extends 'main/sample.html' %}
+{% block title %}Главная{% endblock %}
+
+
+{% block content%}
+
+<div class="main_page">
+ <h4>Добро пожаловать!</h4>
+    <p>
+        Данный проект представляет собой спроектированную базу данных, обеспечивающую взаимодействие с ней в режиме диалога для работников приемной комиссии.
+    </p>
 </div>
 
-
-
-
-</body>
-</html>
+{% endblock %}

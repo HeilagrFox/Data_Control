@@ -51,7 +51,7 @@ class exam(models.Model):
     exam_date = models.DateTimeField('Дата экзамена')
     consult_date = models.DateTimeField('Дата консультации')
     def __str__(self):
-        return self.subject_id.name
+        return f'{self.subject_id.name} ({self.flow_id} поток)'
 
     class Meta:
         verbose_name = 'Экзамен'
@@ -81,3 +81,4 @@ class group(models.Model):
     class Meta:
         verbose_name = 'Группа'
         verbose_name_plural = 'Группы'
+

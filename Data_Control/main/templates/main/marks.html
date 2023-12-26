@@ -1,17 +1,30 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<div class="marks">
-    Оценки:
- {% for key in entrants%}
-    <p>{{key}}</p>
-{%endfor%}
+{% extends 'main/sample.html' %}
+{% block title %}Оценки{% endblock %}
 
-</div>
-</body>
-</html>
+
+{% block content%}
+
+<div class="marks">
+    <div class="block">
+        {% for key in entrants%}
+        <p style="text-align: left"><b>{{key.name}}</b> </p> <br>
+        <u>Оценки:</u>
+        <div class="data">
+        <p>{% for exam in key.exams%}
+        {{exam}} <br>{%endfor%}</p>
+        <p>{% for mark in key.marks%}
+        Оценка:{{mark.mark}} <br>
+        {%endfor%}</p>
+        </div>
+        <p style="text-align: left">
+             <u>Даты:</u> <br>
+       {% for exam in key.exams%}
+        {{exam}} <br>
+        Дата экзамена:{{exam.exam_date}} <br>
+        Дата консультации:{{exam.consult_date}} <br><br>
+        {%endfor%}
+        </p>
+        {%endfor%}
+    </div>
+
+{% endblock %}

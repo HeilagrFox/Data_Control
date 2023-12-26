@@ -1,0 +1,48 @@
+{% extends 'main/sample.html' %}
+{% block title %}Аудитории{% endblock %}
+
+
+{% block content%}
+
+<div class="block">
+    <b>Аудитории:</b>
+
+ {% for key in classrooms%}
+    <b>{{key.group}}</b> <br>
+
+    <div class="data">
+
+        <p>
+         {% for room in key.room%}
+         Аудитория:{{room}}
+        {%endfor%}
+     </p>
+    <p>
+         {% for exam in key.exam%}
+        Экзамен:{{exam}}
+        {%endfor%}
+    </p>
+   </div>
+{%endfor%}
+
+    </div>
+<div class="block">
+    <b>Результаты:</b><br>
+    {% if groups %}
+        <ul style="list-style: none">
+            {% for group in groups %}
+                <li><p>{{ group.group.group_num }}</p> <p>{{ group.exam_date.exam_date }}</p></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Нет групп, занимающих аудиторию в заданное время.</p>
+    {% endif %}
+
+    Введите номер аудитории и время, чтобы увидеть группы, занимающие данную аудиторию: <br><br>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-secondary" >Отправить</button>
+    </form>
+</div>
+{% endblock %}

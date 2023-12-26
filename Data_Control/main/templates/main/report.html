@@ -1,0 +1,49 @@
+{% extends 'main/sample.html' %}
+{% block title %}Отчет{% endblock %}
+
+
+{% block content%}
+
+ <div class="report">
+        <h4>Отчет о работе приемной комиссии</h4><br>
+     <div class="block">
+    {% for key, value in report.0.items %}
+    <p><b>Кафедра {{ key }} :</b> <br>
+       Количество поступающих: {{value}}
+       </p>
+    {% endfor %}
+     </div>
+     <div class="block">
+    {% for key, value in report.1.items %}
+    <p><b>Группа{{ key }} :</b> <br>
+       Количество абитуриентов : {{value}}
+       </p>
+    {% endfor %}
+     </div>
+     <div class="block">
+    {% for key, values in report.2.items %}
+    <b>{{ key }} :</b>
+     <div class="data">
+       <p>Даты: <br>
+        {% for el in values.0 %}
+        {{el}} <br>
+        {% endfor %}</p>
+       <p>Аудитории: <br>
+        {% for el in values.1 %}
+        {{el}} <br>
+        {% endfor %}</p>
+       </div>
+    {% endfor %}
+      </div>
+      <div class="block">
+    {% for key, value in report.3.items %}
+    <p><b>Оценка {{ key }} :</b> <br>
+       {% for key,item in value.items%}
+       {{key}}:{{item}}<br>
+       {% endfor %}
+    </p>
+    {% endfor %}
+      </div>
+   </div>
+
+{% endblock %}
